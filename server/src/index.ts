@@ -4,6 +4,7 @@ import { config } from './config/env.js';
 import { issuesRouter } from './routes/issues.js';
 import { repositoriesRouter } from './routes/repositories.js';
 import { analyzeRouter } from './routes/analyze.js';
+import { AnalyzeController } from './controllers/analyzeController.js';
 import { errorHandler } from './middleware/errorHandler.js';
 import { rateLimiter } from './middleware/rateLimiter.js';
 import { logger } from './utils/logger.js';
@@ -35,7 +36,7 @@ app.get('/api/health', (_req, res) => {
 app.use('/api/issues', issuesRouter);
 app.use('/api/repositories', repositoriesRouter);
 app.use('/api/analyze', analyzeRouter);
-app.use('/api/chat', analyzeRouter); // Also allow /api/chat directly
+app.post('/api/chat', (req, res, next) => AnalyzeController.chat(req, res, next));
 
 // Central Error Handler
 app.use(errorHandler);

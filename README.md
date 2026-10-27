@@ -52,13 +52,14 @@ For Windows PowerShell, copy the example environment file with:
 Copy-Item .env.example .env
 ```
 
-The app can browse GitHub issues without an AI key or a GitHub token. To use AI explanations and chat, set `AI_API_KEY` and `AI_MODEL` in the root `.env`. `AI_BASE_URL` defaults to Hugging Face's OpenAI-compatible inference router; set it to another compatible provider endpoint when needed. The model name is intentionally blank by default. For Hugging Face, use a token with Inference Providers access and a model available to that account.
+The app can browse GitHub issues without an AI key or a GitHub token. To use AI explanations and chat with an OpenAI-compatible provider, set `AI_API_KEY` and `AI_MODEL` in the root `.env`. `AI_BASE_URL` defaults to Hugging Face's OpenAI-compatible inference router; set it to another compatible provider endpoint when needed. The model name is intentionally blank by default. For Hugging Face, use a token with Inference Providers access and a model available to that account. An optional Kaggle GPU tunnel can be configured with `KAGGLE_KERNEL_URL`; see `docs/kaggle_kernel.py` for the tunnel endpoint setup. No Kaggle URL is assumed or enabled by default.
 
 | Variable | Required | Purpose |
 | --- | --- | --- |
 | `AI_API_KEY` | For AI | Provider credential. Keep it server-side. |
 | `AI_BASE_URL` | No | OpenAI-compatible API base URL; defaults to `https://router.huggingface.co/v1`. |
 | `AI_MODEL` | For AI | Provider model identifier. No model is selected by default. |
+| `KAGGLE_KERNEL_URL` | No | Optional tunnel URL for the Kaggle inference endpoint; only configure while that service is running. |
 | `GITHUB_TOKEN` | No | Optional token to raise GitHub API limits. |
 | `PORT` | No | Express port; defaults to `4000`. |
 | `CLIENT_ORIGIN` | No | Allowed browser origin; defaults to Vite at `http://localhost:5173`. |

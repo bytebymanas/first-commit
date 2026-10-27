@@ -10,6 +10,8 @@
     "client": "pnpm --filter client dev",
     "server": "pnpm --filter server dev",
     "dev": "concurrently -k -n \"client,server\" -c \"blue,green\" \"pnpm --filter client dev\" \"pnpm --filter server dev\"",
+    "dev:server": "pnpm --filter server dev",
+    "dev:client": "pnpm --filter client dev",
     "build": "pnpm --filter client build && pnpm --filter server build",
     "typecheck": "pnpm --filter client typecheck && pnpm --filter server typecheck"
   },
