@@ -396,3 +396,22 @@ If FirstCommit helped you with your first pull request, consider starring the re
 <sub>Released under the [MIT License](https://opensource.org/licenses/MIT) &nbsp;·&nbsp; Created and maintained by [bytebymanas](https://github.com/bytebymanas)</sub>
 
 </div>
+
+## Current AI and GitHub setup
+
+The browser sends AI requests to the local Express API. The Express server sends inference requests to the Kaggle Gemma tunnel; the tunnel URL and credentials stay on the server. The Kaggle notebook implementation is in `docs/kaggle_kernel.py` and exposes `/health` and `/generate`.
+
+Start the notebook with a GPU and internet enabled. Copy the URL it prints into `KAGGLE_KERNEL_URL` in the repository root `.env`, then restart the API. Quick Tunnel URLs change when the notebook restarts. The app's **Reconnect Kaggle** action checks the configured URL; it cannot start a stopped notebook or discover a new URL.
+
+If Kaggle is unreachable, the backend can use a local Ollama model when `OLLAMA_FALLBACK_ENABLED=true` and that model is installed. Without either inference service, repository and issue browsing remain available while AI actions show a retryable error.
+
+A `GITHUB_TOKEN` is optional but recommended for repository and issue searches. Without it, GitHub applies a smaller unauthenticated API quota. Put the token in the root `.env` and keep it server-side; never add it to a `VITE_` variable or commit `.env`.
+
+The Vite frontend runs at `http://localhost:5173` and proxies `/api` to Express on port `4000` by default. Set `PORT`, `VITE_PORT`, and `CLIENT_ORIGIN` consistently if you change those ports. Website screenshot analysis uses Playwright; install Chromium with `pnpm --filter server exec playwright install chromium` if needed.
+
+## Project structure
+
+- `client/` — FirstCommit interface based on the provided OpenPath frontend.
+- `server/` — API routes and services, with Kaggle Gemma as the primary AI provider.
+- `docs/kaggle_kernel.py` — Kaggle GPU inference and tunnel setup.
+- `.env.example` — safe configuration template without credentials.
