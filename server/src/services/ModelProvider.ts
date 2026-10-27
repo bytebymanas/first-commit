@@ -4,12 +4,16 @@ type ChatMessage = { role: 'system' | 'user' | 'assistant'; content: string };
 
 export class ModelProvider {
   public static isConfigured(): boolean {
-    return Boolean(config.aiApiKey && config.aiModel);
+    return Boolean(
+      config.kaggleKernelUrl ||
+      config.aiProvider === 'kaggle' ||
+      (config.aiApiKey && config.aiModel)
+    );
   }
 
   public static assertConfigured(): void {
     if (!this.isConfigured()) {
-      const error = new Error('AI explanations need an API key and model in the server environment. GitHub issue browsing works without them.') as Error & { statusCode: number };
+      const error = new Error('AI explanations need an API key and model or KAGGLE_KERNEL_URL in the server environment. GitHub issue browsing works without them.') as Error & { statusCode: number };
       error.statusCode = 503;
       throw error;
     }
@@ -17,6 +21,54 @@ export class ModelProvider {
 
   public static async complete(messages: ChatMessage[], json = false): Promise<string> {
     this.assertConfigured();
+
+    const isKaggle = Boolean(
+      config.kaggleKernelUrl ||
+      config.aiProvider === 'kaggle' ||
+      config.aiBaseUrl.includes('trycloudflare') ||
+      config.aiBaseUrl.includes('ngrok')
+    );
+
+    if (isKaggle) {
+      const baseUrl = (config.kaggleKernelUrl || config.aiBaseUrl).replace(/\/$/, '');
+      const systemMsg = messages.find((m) => m.role === 'system')?.content;
+      const userMsgs = messages.filter((m) => m.role !== 'system').map((m) => m.content).join('\n\n');
+
+      let response: Response;
+      try {
+        response = await fetch(`${baseUrl}/generate`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            prompt: userMsgs,
+            system: systemMsg,
+            model: config.aiModel || 'gemma-3-4b-it',
+            max_tokens: 2048,
+            temperature: 0.2,
+            json_mode: json,
+          }),
+          signal: AbortSignal.timeout(90_000),
+        });
+      } catch (err) {
+        const error = new Error(`The Kaggle GPU endpoint could not be reached at ${baseUrl}. Check the tunnel and try again.`) as Error & { statusCode: number };
+        error.statusCode = 502;
+        throw error;
+      }
+
+      if (!response.ok) {
+        const error = new Error(`The Kaggle GPU endpoint returned HTTP ${response.status}.`) as Error & { statusCode: number };
+        error.statusCode = 502;
+        throw error;
+      }
+
+      const payload = (await response.json()) as { generated_text?: string };
+      if (!payload || typeof payload.generated_text !== 'string' || !payload.generated_text.trim()) {
+        throw new Error('The Kaggle GPU endpoint returned an empty response.');
+      }
+      return payload.generated_text;
+    }
 
     let response: Response;
     try {

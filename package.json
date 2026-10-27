@@ -2,5 +2,14 @@
   "name": "first-commit",
   "private": true,
   "version": "0.1.0",
-  "workspaces": ["client", "server"]
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "dev": "npm --workspace=server run dev",
+    "dev:server": "npm --workspace=server run dev",
+    "dev:client": "npm --workspace=client run dev",
+    "build": "npm --workspaces run build"
+  }
 }
