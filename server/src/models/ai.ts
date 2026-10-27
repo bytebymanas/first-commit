@@ -39,6 +39,11 @@ export interface AnalyzeRequest {
   labels?: string[];
   userSkills?: string[];
   language?: 'english' | 'hinglish';
+  repositoryDescription?: string | null;
+  primaryLanguage?: string | null;
+  repositoryStars?: number;
+  readmeExcerpt?: string | null;
+  contributingGuideExcerpt?: string | null;
 }
 
 export interface ChatRequest {

@@ -26,7 +26,16 @@ export class AnalyzeController {
 
       ModelProvider.assertConfigured();
 
-      const issue = await GitHubService.fetchIssue(repository.owner, repository.repo, number);
+      const [issue, repositoryResult] = await Promise.all([
+        GitHubService.fetchIssue(repository.owner, repository.repo, number),
+        GitHubService.fetchRepo(repository.owner, repository.repo),
+      ]);
+      let documents: Awaited<ReturnType<typeof GitHubService.fetchRepositoryDocs>> = { readme: null, contributing: null };
+      try {
+        documents = await GitHubService.fetchRepositoryDocs(repository.owner, repository.repo);
+      } catch {
+        // Continue with verified issue/metadata context if optional docs are missing or rate limited.
+      }
       const request: AnalyzeRequest = {
         owner: repository.owner,
         repo: repository.repo,
@@ -34,6 +43,11 @@ export class AnalyzeController {
         issueTitle: issue.title,
         issueBody: issue.body || '',
         labels: issue.labels.map((label) => label.name),
+        repositoryDescription: repositoryResult.repo.description,
+        primaryLanguage: repositoryResult.repo.primaryLanguage,
+        repositoryStars: repositoryResult.repo.stars,
+        readmeExcerpt: documents.readme?.content.slice(0, 4000) || null,
+        contributingGuideExcerpt: documents.contributing?.content.slice(0, 4000) || null,
         userSkills: Array.isArray(userSkills) ? userSkills.filter((skill): skill is string => typeof skill === 'string').slice(0, 30) : [],
         language: language === 'hinglish' ? 'hinglish' : 'english',
       };

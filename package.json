@@ -2,5 +2,18 @@
   "name": "first-commit",
   "private": true,
   "version": "0.1.0",
-  "workspaces": ["client", "server"]
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "client": "pnpm --filter client dev",
+    "server": "pnpm --filter server dev",
+    "dev": "concurrently -k -n \"client,server\" -c \"blue,green\" \"pnpm --filter client dev\" \"pnpm --filter server dev\"",
+    "build": "pnpm --filter client build && pnpm --filter server build",
+    "typecheck": "pnpm --filter client typecheck && pnpm --filter server typecheck"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
 }
