@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 580" width="1280" height="580" role="img" aria-label="FirstCommit - Find your way into open source">
+  <defs>
+    <radialGradient id="glow" cx="0.72" cy="0.55" r="0.5">
+      <stop offset="0" stop-color="#d4f54a" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#d4f54a" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="dots" width="28" height="28" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#ffffff" fill-opacity="0.05"/>
+    </pattern>
+    <filter id="blur"><feGaussianBlur stdDeviation="5"/></filter>
+    <filter id="drop" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#000" flood-opacity="0.55"/>
+    </filter>
+  </defs>
+  <style>
+    .serif { font-family: Georgia, 'Times New Roman', serif; }
+    .sans  { font-family: 'Segoe UI', Inter, -apple-system, Arial, sans-serif; }
+    .mono  { font-family: 'SFMono-Regular', Menlo, Consolas, 'Courier New', monospace; }
+    .card  { fill:#14171c; stroke:#3b4048; stroke-width:1.5; }
+    .icon  { fill:#232a14; }
+    .lime  { stroke:#d4f54a; fill:none; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round; }
+    .lab   { fill:#9aa0a8; font-size:11px; letter-spacing:2.2px; }
+    .ttl   { fill:#f5f3ee; font-size:19px; font-weight:600; }
+  </style>
+
+  <rect width="1280" height="580" rx="24" fill="#0f1115"/>
+  <rect width="1280" height="580" rx="24" fill="url(#dots)"/>
+  <rect width="1280" height="580" rx="24" fill="url(#glow)"/>
+
+  <!-- ============ LEFT: copy ============ -->
+  <text x="58" y="130" class="serif" font-size="82" fill="#f5f3ee" letter-spacing="-3">Find your</text>
+  <text x="58" y="212" class="serif" font-size="82" fill="#f5f3ee" letter-spacing="-3">way into</text>
+  <text x="58" y="294" class="serif" font-size="82" font-style="italic" fill="#d4f54a" letter-spacing="-3">open source.</text>
+
+  <text x="58" y="352" class="sans" font-size="21" fill="#a8adb5">From exploring programs to finding the right</text>
+  <text x="58" y="383" class="sans" font-size="21" fill="#a8adb5">repository, FirstCommit helps you navigate your</text>
+  <text x="58" y="414" class="sans" font-size="21" fill="#a8adb5">open-source journey.</text>
+
+  <!-- buttons -->
+  <g class="sans" font-size="17" font-weight="600">
+    <rect x="58" y="446" width="236" height="52" rx="14" fill="#d4f54a"/>
+    <circle cx="94" cy="471" r="7" fill="none" stroke="#0f1115" stroke-width="2.2"/>
+    <path d="M99 476 L105 482" stroke="#0f1115" stroke-width="2.2" stroke-linecap="round"/>
+    <text x="118" y="478" fill="#0f1115">Find my first issue</text>
+
+    <rect x="308" y="446" width="226" height="52" rx="14" fill="none" stroke="#3b4048" stroke-width="1.5"/>
+    <circle cx="344" cy="472" r="9" fill="none" stroke="#f5f3ee" stroke-width="1.8"/>
+    <path d="M341 476 L346 470 L348 474 Z" fill="#f5f3ee"/>
+    <text x="366" y="478" fill="#f5f3ee">Explore programs</text>
+
+    <rect x="548" y="446" width="236" height="52" rx="14" fill="none" stroke="#3b4048" stroke-width="1.5"/>
+    <path d="M572 472 q12 -13 24 0 q-12 13 -24 0z" fill="none" stroke="#f5f3ee" stroke-width="1.8"/>
+    <circle cx="584" cy="472" r="3" fill="#f5f3ee"/>
+    <text x="608" y="478" fill="#f5f3ee">Inspect a website</text>
+  </g>
+
+  <text x="58" y="548" class="sans" font-size="15" letter-spacing="4.5" fill="#6f757d">DISCOVER  ·  UNDERSTAND  ·  CONTRIBUTE</text>
+
+  <!-- ============ RIGHT: floating cards ============ -->
+  <!-- code comments -->
+  <g class="mono" font-size="13" fill="#6f757d">
+    <text x="900" y="88">// meaningful</text>
+    <text x="900" y="110">// contributions</text>
+    <text x="900" y="132">// for a more open world</text>
+  </g>
+
+  <!-- glowing path -->
+  <path d="M820 400 C 880 380, 900 330, 960 322 S 1060 300, 1100 235 L 1150 180"
+        fill="none" stroke="#d4f54a" stroke-width="6" stroke-opacity="0.45" filter="url(#blur)"/>
+  <path id="trail" d="M820 400 C 880 380, 900 330, 960 322 S 1060 300, 1100 235 L 1150 180"
+        fill="none" stroke="#d4f54a" stroke-width="3" stroke-linecap="round" stroke-dasharray="6 0"/>
+  <circle r="6" fill="#d4f54a">
+    <animateMotion dur="4s" repeatCount="indefinite"><mpath href="#trail"/></animateMotion>
+  </circle>
+  <circle cx="1150" cy="180" r="7" fill="#d4f54a"/>
+  <circle cx="820" cy="400" r="6" fill="#d4f54a"/>
+
+  <!-- card: explore programs -->
+  <g filter="url(#drop)">
+    <rect x="690" y="150" width="226" height="92" rx="16" class="card"/>
+    <rect x="708" y="170" width="48" height="48" rx="12" class="icon"/>
+    <path d="M732 178 l3 9 9 3 -9 3 -3 9 -3 -9 -9 -3 9 -3z" class="lime" transform="translate(0 0) scale(0.95) translate(11 7)"/>
+    <text x="774" y="184" class="mono lab">START HERE</text>
+    <text x="774" y="208" class="sans ttl">Explore</text>
+    <text x="774" y="230" class="sans ttl">programs</text>
+  </g>
+
+  <!-- card: get context -->
+  <g filter="url(#drop)">
+    <rect x="1020" y="196" width="226" height="92" rx="16" class="card"/>
+    <rect x="1038" y="216" width="48" height="48" rx="12" class="icon"/>
+    <path d="M1050 232 q7 -3 12 3 q5 -6 12 -3 v22 q-7 -3 -12 3 q-5 -6 -12 -3z M1062 235 v22" class="lime"/>
+    <text x="1104" y="230" class="mono lab">GET CONTEXT</text>
+    <text x="1104" y="254" class="sans ttl">Understand</text>
+    <text x="1104" y="276" class="sans ttl">the project</text>
+  </g>
+
+  <!-- card: repo files -->
+  <g filter="url(#drop)">
+    <rect x="860" y="270" width="214" height="118" rx="16" class="card"/>
+    <g class="mono" font-size="13" fill="#d9dce1">
+      <rect x="884" y="294" width="9" height="9" rx="2.5" fill="#d4f54a"/><text x="906" y="303">README.md</text>
+      <rect x="884" y="324" width="9" height="9" rx="2.5" fill="#d4f54a"/><text x="906" y="333">CONTRIBUTING</text>
+      <rect x="884" y="354" width="9" height="9" rx="2.5" fill="#d4f54a"/><text x="906" y="363">src / project</text>
+    </g>
+  </g>
+
+  <!-- card: good first issue -->
+  <g filter="url(#drop)">
+    <rect x="690" y="404" width="236" height="92" rx="16" class="card"/>
+    <rect x="708" y="424" width="48" height="48" rx="12" class="icon"/>
+    <circle cx="730" cy="445" r="9" class="lime"/>
+    <path d="M737 452 l8 8" class="lime"/>
+    <text x="774" y="438" class="mono lab">GOOD FIRST STEP</text>
+    <text x="774" y="462" class="sans ttl">Find a good</text>
+    <text x="774" y="484" class="sans ttl">first issue</text>
+  </g>
+
+  <!-- card: pull request -->
+  <g filter="url(#drop)">
+    <rect x="1010" y="438" width="226" height="86" rx="16" class="card"/>
+    <rect x="1028" y="456" width="48" height="48" rx="12" class="icon"/>
+    <circle cx="1043" cy="468" r="3.5" class="lime"/>
+    <circle cx="1043" cy="493" r="3.5" class="lime"/>
+    <circle cx="1062" cy="493" r="3.5" class="lime"/>
+    <path d="M1043 472 v14 M1062 489 v-12 q0 -5 -5 -5 h-4" class="lime"/>
+    <text x="1094" y="474" class="mono lab">YOUR FIRST</text>
+    <text x="1094" y="499" class="sans ttl">Pull request</text>
+  </g>
+
+  <!-- terminal -->
+  <g class="mono" font-size="12.5" fill="#6f757d" text-anchor="end">
+    <text x="1236" y="548">git checkout -b first-contribution</text>
+    <text x="1236" y="568">git push origin main</text>
+  </g>
+</svg>

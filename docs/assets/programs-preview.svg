@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" width="1200" height="760" role="img" aria-label="FirstCommit Program Directory">
+  <defs>
+    <filter id="drop" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#000" flood-opacity="0.45"/>
+    </filter>
+    <clipPath id="clip"><rect x="40" y="76" width="1120" height="640" rx="0"/></clipPath>
+  </defs>
+  <style>
+    .sans { font-family: 'Segoe UI', Inter, -apple-system, Arial, sans-serif; }
+    .mono { font-family: 'SFMono-Regular', Menlo, Consolas, 'Courier New', monospace; }
+    .card { fill:#ffffff; stroke:#e4e1d9; stroke-width:1.5; }
+    .eyebrow { fill:#8b8f96; font-size:12px; letter-spacing:2px; }
+    .h { fill:#15171b; font-size:24px; font-weight:600; }
+    .p { fill:#5d626a; font-size:15px; }
+    .chip { fill:#efece5; }
+    .chipt { fill:#3b4048; font-size:13px; }
+    .link { fill:#3b4048; font-size:15px; font-weight:500; }
+    .btn { fill:#101216; }
+    .btnt { fill:#ffffff; font-size:15px; font-weight:600; }
+  </style>
+
+  <rect width="1200" height="760" rx="24" fill="#0f1115"/>
+
+  <!-- window -->
+  <g filter="url(#drop)">
+    <rect x="40" y="28" width="1120" height="700" rx="16" fill="#f8f7f3"/>
+  </g>
+  <path d="M40 44 a16 16 0 0 1 16 -16 h1088 a16 16 0 0 1 16 16 v32 h-1120z" fill="#15171b"/>
+  <circle cx="68" cy="52" r="6" fill="#ef4444"/><circle cx="90" cy="52" r="6" fill="#f59e0b"/><circle cx="112" cy="52" r="6" fill="#22c55e"/>
+  <rect x="440" y="40" width="320" height="24" rx="12" fill="#ffffff" fill-opacity="0.08"/>
+  <text x="600" y="57" text-anchor="middle" class="sans" font-size="12" fill="#9aa0a8">localhost:5173/programs</text>
+
+  <g clip-path="url(#clip)">
+    <!-- header -->
+    <rect x="72" y="100" width="168" height="30" rx="15" fill="#efece5" stroke="#e0ddd4"/>
+    <text x="156" y="120" text-anchor="middle" class="mono" font-size="12.5" letter-spacing="1.5" fill="#3b4048">PROGRAM DIRECTORY</text>
+    <text x="72" y="190" class="sans" font-size="46" font-weight="600" fill="#15171b" letter-spacing="-1.5">Explore Open-Source Programs</text>
+    <text x="72" y="228" class="sans" font-size="16" fill="#5d626a">Programs are optional guidance. Explore an official program or continue straight to any public</text>
+    <text x="72" y="252" class="sans" font-size="16" fill="#5d626a">GitHub repository; current details live on each program's official site.</text>
+
+    <!-- card 1 -->
+    <rect x="72" y="288" width="540" height="244" rx="18" class="card"/>
+    <text x="102" y="326" class="mono eyebrow">GOOGLE OPEN SOURCE</text>
+    <text x="102" y="360" class="sans h">Google Summer of Code (GSoC)</text>
+    <text x="102" y="388" class="sans p">A global online mentoring program that introduces</text>
+    <text x="102" y="410" class="sans p">contributors to open-source development.</text>
+    <rect x="102" y="428" width="196" height="28" rx="14" class="chip"/>
+    <text x="200" y="447" text-anchor="middle" class="sans chipt">Mentored open-source projects</text>
+    <text x="318" y="448" class="sans link">Explore Program ↗</text>
+    <rect x="102" y="474" width="480" height="40" rx="10" class="btn"/>
+    <text x="342" y="499" text-anchor="middle" class="sans btnt">Continue with this program (optional)  →</text>
+
+    <!-- card 2 -->
+    <rect x="636" y="288" width="540" height="244" rx="18" class="card"/>
+    <text x="666" y="326" class="mono eyebrow">GIRLSCRIPT FOUNDATION</text>
+    <text x="666" y="360" class="sans h">GirlScript Summer of Code (GSSoC)</text>
+    <text x="666" y="388" class="sans p">A community program centered on building and</text>
+    <text x="666" y="410" class="sans p">contributing to open-source projects.</text>
+    <rect x="666" y="428" width="150" height="28" rx="14" class="chip"/>
+    <text x="741" y="447" text-anchor="middle" class="sans chipt">Community projects</text>
+    <text x="836" y="448" class="sans link">Explore Program ↗</text>
+    <rect x="666" y="474" width="480" height="40" rx="10" class="btn"/>
+    <text x="906" y="499" text-anchor="middle" class="sans btnt">Continue with this program (optional)  →</text>
+
+    <!-- card 3 -->
+    <rect x="72" y="556" width="540" height="244" rx="18" class="card"/>
+    <text x="102" y="594" class="mono eyebrow">DIGITALOCEAN, MLH &amp; DEV</text>
+    <text x="102" y="628" class="sans h">Hacktoberfest</text>
+    <text x="102" y="656" class="sans p">A community event celebrating open source through</text>
+    <text x="102" y="678" class="sans p">online activities and local events.</text>
+
+    <!-- card 4 -->
+    <rect x="636" y="556" width="540" height="244" rx="18" class="card"/>
+    <text x="666" y="594" class="mono eyebrow">EUROPEAN SUMMER OF CODE</text>
+    <text x="666" y="628" class="sans h">European Summer of Code (ESoC)</text>
+    <text x="666" y="656" class="sans p">A program connecting contributors with open-source</text>
+    <text x="666" y="678" class="sans p">and applied projects through participating hubs.</text>
+  </g>
+</svg>
